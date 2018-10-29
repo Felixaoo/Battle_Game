@@ -1,18 +1,20 @@
 package com.ocr.felix;
 
 public abstract class Character {
-    int level;
-    int health;
-    int strenght;
-    int agility;
-    int intelligence;
+    protected int level;
+    protected int health;
+    protected int strength;
+    protected int agility;
+    protected int intelligence;
+    protected int damage;
 
-    public Character(int level, int health, int strength, int agility, int intelligence) {
+    public Character(int level, int health, int strength, int agility, int intelligence, int damage) {
         this.level = level;
         this.health = health;
-        this.strenght = strenght;
+        this.strength = strength;
         this.agility = agility;
         this.intelligence = intelligence;
+        this.damage = damage;
     }
 
     public int getLevel() {
@@ -32,11 +34,11 @@ public abstract class Character {
     }
 
     public int getStrenght() {
-        return strenght;
+        return strength;
     }
 
     public void setStrenght(int strenght) {
-        this.strenght = strenght;
+        this.strength = strenght;
     }
 
     public int getAgility() {
