@@ -12,13 +12,13 @@ public abstract class Character {
     protected int damage;
     protected Scanner sc = new Scanner(System.in);
 
+
     public Character(int level, int health, int strength, int agility, int intelligence) {
         this.level = level;
         this.health = health;
         this.strength = strength;
         this.agility = agility;
         this.intelligence = intelligence;
-        this.nbClass = nbClass;
     }
 
     public int getLevel() {
@@ -73,14 +73,15 @@ public abstract class Character {
     }
     public int askOthers(String stat){
         int nbResponse;
-        System.out.println(stat + "du personnage");
+        System.out.println(stat + " du personnage");
         nbResponse = sc.nextInt();
+        return nbResponse;
     }
     public int askLevel(){
         String stat = "Niveau";
         return askOthers(stat);
     }
-    public int askStrenght(){
+    public int askStrength(){
         String stat = "Force";
         return askOthers(stat);
     }
@@ -93,27 +94,21 @@ public abstract class Character {
         return askOthers(stat);
     }
 
-    public void creatCharacter(Player player){
-        System.out.println("Création du personnage du "+ player);
-        nbClass = askClass();
+    public void creatCharacter(){
         level = askLevel();
+        setLevel(level);
         health = level*5;
-        strength = askStrenght();
+        setHealth(health);
+        strength = askStrength();
+        setStrenght(strength);
         agility = askAgility();
+        setAgility(agility);
         intelligence = askIntelligence();
-        switch (nbClass){
-            case 1:
-                Warrior warrior = new Warrior(level, health, strength, agility, intelligence);
-                break;
-            case 2:
-                Hunt hunt = new Hunt(level, health, strength, agility, intelligence);
-                break;
-            case 3 :
-                Wizard wizard = new Wizard(level, health, strength, agility, intelligence);
-                break;
-                }
+        setIntelligence(intelligence);
 
-        }
+    }
+
+
 
 
 
