@@ -1,9 +1,9 @@
 package com.ocr.felix;
 
-public class Wizard extends Character {
+public class Wizard extends Personage {
 
-    public Wizard(int level, int health, int strength, int agility, int intelligence) {
-        super(level, health, strength, agility, intelligence);
+    public Wizard(int level, int health, int strength, int agility, int intelligence, String name) {
+        super(level, health, strength, agility, intelligence, name);
     }
     public int fireBall(){
         damage = intelligence;

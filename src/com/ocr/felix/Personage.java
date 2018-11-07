@@ -3,7 +3,7 @@ package com.ocr.felix;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public abstract class Character {
+public abstract class Personage {
     protected int nbClass;
     protected int level;
     protected int health;
@@ -11,6 +11,7 @@ public abstract class Character {
     protected int agility;
     protected int intelligence;
     protected int damage;
+    protected String name;
     protected Scanner sc = new Scanner(System.in);
 
 
@@ -23,12 +24,13 @@ public abstract class Character {
      * @param agility
      * @param intelligence
      */
-    public Character(int level, int health, int strength, int agility, int intelligence) {
+    public Personage(int level, int health, int strength, int agility, int intelligence, String name) {
         this.level = level;
         this.health = health;
         this.strength = strength;
         this.agility = agility;
         this.intelligence = intelligence;
+        this.name = name;
     }
 
     /**
@@ -72,6 +74,14 @@ public abstract class Character {
 
     public void setIntelligence(int intelligence) {
         this.intelligence = intelligence;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int askClass() {

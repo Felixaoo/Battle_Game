@@ -1,11 +1,8 @@
 package com.ocr.felix;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Player {
     String name;
-    Character character;
+    Personage personage;
 
     public String getName() {
         return name;
@@ -15,17 +12,17 @@ public class Player {
         this.name = name;
     }
 
-    public Player(String name, Character character) {
+    public Player(String name, Personage personage) {
         this.name = name;
-        this.character = character;
+        this.personage = personage;
     }
 
-    public Character getCharacter() {
-        return character;
+    public Personage getPersonage() {
+        return personage;
     }
 
-    public void setCharacter(Character character) {
-        this.character = character;
+    public void setPersonage(Personage personage) {
+        this.personage = personage;
     }
     public void createPlayer (String name) {
         /**
