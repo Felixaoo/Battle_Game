@@ -6,11 +6,12 @@ public class Warrior extends Character {
     }
 
     public int strike(){
-        damage = strength;
+        int damage = strength;
         return damage;
     }
     public int rage (){
-        damage = strength*2;
+        int damage = strength*2;
         return damage;
     }
+
 }

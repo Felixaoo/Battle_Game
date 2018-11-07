@@ -1,5 +1,6 @@
 package com.ocr.felix;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class Character {
@@ -13,6 +14,15 @@ public abstract class Character {
     protected Scanner sc = new Scanner(System.in);
 
 
+    /**
+     * Constructeur
+     *
+     * @param level
+     * @param health
+     * @param strength
+     * @param agility
+     * @param intelligence
+     */
     public Character(int level, int health, int strength, int agility, int intelligence) {
         this.level = level;
         this.health = health;
@@ -21,6 +31,9 @@ public abstract class Character {
         this.intelligence = intelligence;
     }
 
+    /**
+     * Getter and Setter
+     */
     public int getLevel() {
         return level;
     }
@@ -61,43 +74,54 @@ public abstract class Character {
         this.intelligence = intelligence;
     }
 
-    public int askClass(){
-            int nbChoice;
-            System.out.println(" Veuillez choisir la classe de votre personnage : 1. Guerrier, 2. Mage, 3. Rôdeur");
-            do {
-                nbChoice = sc.nextInt();
-                System.out.println(" Veuillez rentrer un chiffre entre 1 et 3 correspondant à la classe que vous souhaitez");
-            } while (nbChoice <= 0 || nbChoice >= 4);
-            return nbChoice;
+    public int askClass() {
+        int nbChoice;
+        System.out.println(" Veuillez choisir la classe de votre personnage : 1. Guerrier, 2. Mage, 3. Rôdeur");
+        do {
+            nbChoice = sc.nextInt();
+            System.out.println(" Veuillez rentrer un chiffre entre 1 et 3 correspondant à la classe que vous souhaitez");
+        } while (nbChoice <= 0 || nbChoice >= 4);
+        return nbChoice;
 
     }
-    public int askOthers(String stat){
+
+    /**
+     * permit to ask about the stat
+     *
+     * @param stat
+     * @return int nbresponse
+     */
+    public int askOthers(String stat) {
         int nbResponse;
         System.out.println(stat + " du personnage");
         nbResponse = sc.nextInt();
         return nbResponse;
     }
-    public int askLevel(){
+
+    public int askLevel() {
         String stat = "Niveau";
         return askOthers(stat);
     }
-    public int askStrength(){
+
+    public int askStrength() {
         String stat = "Force";
         return askOthers(stat);
     }
-    public int askAgility(){
+
+    public int askAgility() {
         String stat = "Agilité";
         return askOthers(stat);
     }
-    public int askIntelligence(){
+
+    public int askIntelligence() {
         String stat = "Intelligence";
         return askOthers(stat);
     }
 
-    public void creatCharacter(){
+    public void createCharacter() {
         level = askLevel();
         setLevel(level);
-        health = level*5;
+        health = level * 5;
         setHealth(health);
         strength = askStrength();
         setStrenght(strength);
@@ -108,9 +132,8 @@ public abstract class Character {
 
     }
 
-
-
-
+    public void choseClass() {
 
     }
+}
 
