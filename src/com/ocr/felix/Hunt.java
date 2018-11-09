@@ -4,12 +4,23 @@ public class Hunt extends Personage {
     public Hunt(int level, int health, int strength, int agility, int intelligence, String name ) {
         super(level, health, strength, agility, intelligence, name);
     }
-    public int arrowShot (){
-        damage = agility;
-        return damage;
+
+    @Override
+    public String cri() {
+        return "Hya";
     }
-    public int concentration(){
-        agility += level/2;
-        return agility;
+
+    @Override
+    public int normalAttack() { // arrowShot attack
+    damage = getAgility();
+    System.out.println(getName() + " utilise tir à l'arc et inflige" + damage + " dommages");
+    return damage;
+    }
+
+    @Override
+    public int specialAttack() { // concentration attack
+    agility = getAgility() + getLevel()/2;
+    System.out.println(getName() + " utilise concentration et gagne " + getLevel()/2 + " d'agilité");
+    return agility;
     }
 }

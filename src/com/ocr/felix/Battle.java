@@ -3,9 +3,17 @@ package com.ocr.felix;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Main {
-/**
-    public static Personage createPlayer(String name) {
+public class Battle {
+
+    Personage player1;
+    Personage player2;
+
+
+public Battle () {
+    Personage player1 = createPlayer("Joueur1");
+    Personage player2 = createPlayer("Joueur2");
+}
+    public Personage createPlayer(String name){
         System.out.println("Création du personnage du " + name);
         int nbClass = -1;
         boolean responseIsGood = true;
@@ -43,27 +51,13 @@ public class Main {
                     return null;
             }
         } while (!responseIsGood);
-
-
-
-    }
-    Personage player1 = createPlayer("Joueur 1");
-    Personage player2 = createPlayer("Joueur 2");
-
-    public void battle(){
-        for (int i>0, wa)
-
-    }
-*/
-    public static void main(String[] args) {
-
-     Battle battle = new Battle();
-
-
-
-      }
-
-
-
     }
 
+public void startGame(){
+    do{
+
+
+    }while ( player1.getHealth()<=0 || player2.getHealth()<=0);
+}
+
+    }
