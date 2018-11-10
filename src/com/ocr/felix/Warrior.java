@@ -11,16 +11,18 @@ public class Warrior extends Personage {
     }
 
     @Override
-    public int normalAttack() { // strike
+    public void normalAttack(Personage player) { // strike
     int damage = getStrenght();
-    System.out.println(getName() + " utilise coup d'épée et inflige " + damage + " dommages");
-    return damage;
+        System.out.println(getName() + " utilise coup d'épée et inflige " + damage + " dommage(s)");
+        player.setHealth(player.getHealth() - damage);
+        System.out.println(player.getName() + "perd " + damage + " point(s) de vie");
     }
 
     @Override
-    public int specialAttack() { // rage
+    public void specialAttack(Personage player) { // rage
     int damage = getStrenght()*2;
-    System.out.println(getName() + " utilise coup de rage et inflige " + damage + " dommages ");
-    return damage;
+    System.out.println(getName() + " utilise coup de rage et inflige " + damage + " dommage(s) ");
+    player.setHealth(player.getHealth() - damage);
+    System.out.println(player.getName() + "perd " + damage + " point(s) de vie");
     }
 }

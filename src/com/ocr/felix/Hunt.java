@@ -11,16 +11,17 @@ public class Hunt extends Personage {
     }
 
     @Override
-    public int normalAttack() { // arrowShot attack
+    public void normalAttack(Personage player) { // arrowShot attack
     damage = getAgility();
-    System.out.println(getName() + " utilise tir à l'arc et inflige " + damage + " dommages");
-    return damage;
-    }
+
+        System.out.println(getName() + " utilise tir à l'arc et inflige " + damage + " dommage(s)");
+        player.setHealth(player.getHealth()-damage);
+        System.out.println(player.getName() + " perd " + damage + " points de vie");
+        }
 
     @Override
-    public int specialAttack() { // concentration attack
-    agility = getAgility() + getLevel()/2;
+    public void specialAttack(Personage player) { // concentration attack
     System.out.println(getName() + " utilise concentration et gagne " + getLevel()/2 + " d'agilité");
-    return agility;
+    setAgility(getAgility() + getLevel()*1/2);
     }
 }

@@ -26,7 +26,7 @@ public abstract class Personage {
      */
     public Personage(int level, int health, int strength, int agility, int intelligence, String name) {
         this.level = level;
-        this.health = health;
+        this.health = level *5;
         this.strength = strength;
         this.agility = agility;
         this.intelligence = intelligence;
@@ -56,8 +56,8 @@ public abstract class Personage {
         return strength;
     }
 
-    public void setStrenght(int strenght) {
-        this.strength = strenght;
+    public void setStrenght(int strength) {
+        this.strength = strength;
     }
 
     public int getAgility() {
@@ -149,8 +149,8 @@ public abstract class Personage {
 
 
     public abstract String cri();
-    public abstract int normalAttack();
-    public abstract int specialAttack();
+    public abstract void normalAttack(Personage player);
+    public abstract void specialAttack(Personage player);
 
 
 

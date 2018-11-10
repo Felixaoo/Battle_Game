@@ -70,23 +70,36 @@ public class Battle {
             if (turn % 2 == 1) {
                 nbAttack = askAttack(player1);
                 if (nbAttack == 1)
-                    player1.normalAttack();
-                if (nbAttack == 2)
-                    player1.specialAttack();
+                    player1.normalAttack(player2);
+                else if (nbAttack == 2)
+                    player1.specialAttack(player2);
+                else {
+                    System.out.println("L'attaque n'existe pas.");
+                    turn--;
+                }
+                turn++;
+
+                if (turn % 2 == 0) {
+                    nbAttack = askAttack(player2);
+                    if (nbAttack == 1)
+                        player2.normalAttack(player1);
+                    else if (nbAttack == 2)
+                        player2.specialAttack(player1);
+                    else {
+                        System.out.println("L'attaque n'existe pas.");
+                        turn--;
+                    }
+                }
+                turn++;
             }
-            turn++;
-            if (turn % 2 == 0) {
-                nbAttack = askAttack(player2);
-                if (nbAttack == 1)
-                    player2.normalAttack();
-                if (nbAttack == 2)
-                    player2.specialAttack();
-            }
-            turn++;
-        }    while (player1.getHealth() >= 0 || player2.getHealth() >= 0) ;
+        }while (player1.getHealth() > 0 && player2.getHealth() > 0) ;
+            if (player1.getHealth() < 0)
+                System.out.println("Le joueur 1 a perdu !!!");
+            else if (player2.getHealth() < 0)
+                System.out.println("Le joueur 2 a perdu !!!");
+
+
+        }
 
 
     }
-}
-
-
