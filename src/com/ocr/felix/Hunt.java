@@ -13,7 +13,7 @@ public class Hunt extends Personage {
     @Override
     public int normalAttack() { // arrowShot attack
     damage = getAgility();
-    System.out.println(getName() + " utilise tir à l'arc et inflige" + damage + " dommages");
+    System.out.println(getName() + " utilise tir à l'arc et inflige " + damage + " dommages");
     return damage;
     }
 

@@ -13,14 +13,14 @@ public class Warrior extends Personage {
     @Override
     public int normalAttack() { // strike
     int damage = getStrenght();
-    System.out.println(getName() + " utilise coup d'épée et inflige" + damage + " dommages");
+    System.out.println(getName() + " utilise coup d'épée et inflige " + damage + " dommages");
     return damage;
     }
 
     @Override
     public int specialAttack() { // rage
     int damage = getStrenght()*2;
-    System.out.println(getName() + " utilise coup de rage et inflige" + damage + " dommages ");
+    System.out.println(getName() + " utilise coup de rage et inflige " + damage + " dommages ");
     return damage;
     }
 }

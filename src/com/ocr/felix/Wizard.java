@@ -14,7 +14,7 @@ public class Wizard extends Personage {
     @Override
     public int normalAttack() { // fireball attack
     damage = intelligence;
-    System.out.println(getName() + " utilise boule de feu et inflige" + damage + " dommages");
+    System.out.println(getName() + " utilise boule de feu et inflige " + damage + " dommages");
     return damage;
     }
 

@@ -14,7 +14,7 @@ public class Battle {
     public Battle() {
         Personage player1 = createPlayer("Joueur1");
         Personage player2 = createPlayer("Joueur2");
-        askAttack(player1);
+        startGame();
 
     }
 
@@ -65,20 +65,30 @@ public class Battle {
 
     public void startGame() {
         int turn = 1; // variable to determinate who will attack
+        int nbAttack = -1;
         do {
-            if (turn % 2 == 1)
+            if (turn % 2 == 1) {
                 askAttack(player1);
-
-                        player1.normalAttack();
-                turn++;
-                if (turn % 2 == 0)
-                    askAttack(player2);
-                turn++;
-
-
+                nbAttack = askAttack(player1);
+                if (nbAttack == 1)
+                    player1.normalAttack();
+                if (nbAttack == 2)
+                    player1.specialAttack();
             }
-            while (player1.getHealth() <= 0 || player2.getHealth() <= 0) ;
-        }
+            turn++;
+            if (turn % 2 == 0) {
+                askAttack(player2);
+                nbAttack = askAttack(player2);
+                if (nbAttack == 1)
+                    player2.normalAttack();
+                if (nbAttack == 2)
+                    player2.specialAttack();
+            }
+            turn++;
+        }    while (player1.getHealth() >= 0 || player2.getHealth() >= 0) ;
+
 
     }
+}
+
 
