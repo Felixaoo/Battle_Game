@@ -141,16 +141,13 @@ public abstract class Personage {
             intelligence = askIntelligence();
             setIntelligence(intelligence);
             if ( strength + agility +intelligence != level)
-                System.out.println( "La somme de la force, de l'agilité et de l'intelligence de votre personnage doit être égal à son niveau.");
+                System.out.println( "La somme de la force, de l'agilité et de l'intelligence de votre personnage doit être égale à son niveau.");
         }while ( strength + agility + intelligence != level);
 
     }
-    public  int askAttack(){
-        System.out.println(name + " (" + getHealth() + " vitalité ) veuillez choisir votre action");
-        int nbResponse =sc.nextInt();
-        return nbResponse;
 
-    }
+
+
     public abstract String cri();
     public abstract int normalAttack();
     public abstract int specialAttack();

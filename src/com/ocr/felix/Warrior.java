@@ -7,7 +7,7 @@ public class Warrior extends Personage {
 
     @Override
     public String cri() {
-    return "woargh";
+    return "Woargh";
     }
 
     @Override

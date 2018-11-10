@@ -3,21 +3,25 @@ package com.ocr.felix;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 public class Battle {
 
     Personage player1;
     Personage player2;
+    Scanner sc = new Scanner(System.in);
 
 
-public Battle () {
-    Personage player1 = createPlayer("Joueur1");
-    Personage player2 = createPlayer("Joueur2");
-}
-    public Personage createPlayer(String name){
+    public Battle() {
+        Personage player1 = createPlayer("Joueur1");
+        Personage player2 = createPlayer("Joueur2");
+        askAttack(player1);
+
+    }
+
+    public Personage createPlayer(String name) {
         System.out.println("Création du personnage du " + name);
         int nbClass = -1;
         boolean responseIsGood = true;
-        Scanner sc = new Scanner(System.in);
         System.out.println("Veuillez choisir la classe de votre personnage : 1. Guerrier, 2. Mage, 3. Rôdeur");
         do {
             try {
@@ -32,17 +36,17 @@ public Battle () {
                 case 1:
                     Warrior warrior = new Warrior(0, 0, 0, 0, 0, name);
                     warrior.createCharacter();
-                    System.out.println(warrior.cri() + " Je suis le guerrier " + warrior.getName() + " de niveau " + warrior.getLevel() + " je possède " + warrior.getHealth() + " de vitalité ," + warrior.getStrenght() + " de force" + warrior.getAgility() + " d'agilité et " + warrior.getIntelligence() + " d'intelligence.");
+                    System.out.println(warrior.cri() + " Je suis le guerrier " + warrior.getName() + " de niveau " + warrior.getLevel() + " je possède " + warrior.getHealth() + " de vitalité , " + warrior.getStrenght() + " de force " + warrior.getAgility() + " d'agilité et " + warrior.getIntelligence() + " d'intelligence.");
                     return warrior;
                 case 2:
                     Wizard wizard = new Wizard(0, 0, 0, 0, 0, name);
                     wizard.createCharacter();
-                    System.out.println(wizard.cri() + " Je suis le mage " + wizard.getName() + " de niveau " + wizard.getLevel() + " je possède " + wizard.getHealth() + " de vitalité ," + wizard.getStrenght() + " de force " + wizard.getAgility() + " d'agilité et " + wizard.getIntelligence() + " d'intelligence.");
+                    System.out.println(wizard.cri() + " Je suis le mage " + wizard.getName() + " de niveau " + wizard.getLevel() + " je possède " + wizard.getHealth() + " de vitalité , " + wizard.getStrenght() + " de force " + wizard.getAgility() + " d'agilité et " + wizard.getIntelligence() + " d'intelligence.");
                     return wizard;
                 case 3:
                     Hunt hunt = new Hunt(0, 0, 0, 0, 0, name);
                     hunt.createCharacter();
-                    System.out.println(hunt.cri() + " Je suis le rodeur " + hunt.getName() + " de niveau " + hunt.getLevel() + " je possède " + hunt.getHealth() + " de vitalité ," + hunt.getStrenght() + " de force " + hunt.getAgility() + " d'agilité et " + hunt.getIntelligence() + " d'intelligence.");
+                    System.out.println(hunt.cri() + " Je suis le rodeur " + hunt.getName() + " de niveau " + hunt.getLevel() + " je possède " + hunt.getHealth() + " de vitalité , " + hunt.getStrenght() + " de force " + hunt.getAgility() + " d'agilité et " + hunt.getIntelligence() + " d'intelligence.");
                     return hunt;
 
                 default:
@@ -53,11 +57,28 @@ public Battle () {
         } while (!responseIsGood);
     }
 
-public void startGame(){
-    do{
+    public int askAttack(Personage player) {
+        System.out.println(player.name + " (" + player.getHealth() + " vitalité ) veuillez choisir votre action (1. Attaque basique, 2. Attaque spéciale");
+        int nbAttack = sc.nextInt();
+        return nbAttack;
+    }
+
+    public void startGame() {
+        int turn = 1; // variable to determinate who will attack
+        do {
+            if (turn % 2 == 1)
+                askAttack(player1);
+
+                        player1.normalAttack();
+                turn++;
+                if (turn % 2 == 0)
+                    askAttack(player2);
+                turn++;
 
 
-    }while ( player1.getHealth()<=0 || player2.getHealth()<=0);
-}
+            }
+            while (player1.getHealth() <= 0 || player2.getHealth() <= 0) ;
+        }
 
     }
+
