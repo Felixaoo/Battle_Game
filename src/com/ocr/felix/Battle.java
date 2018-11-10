@@ -12,8 +12,8 @@ public class Battle {
 
 
     public Battle() {
-        Personage player1 = createPlayer("Joueur1");
-        Personage player2 = createPlayer("Joueur2");
+        player1 = createPlayer("Joueur1");
+        player2 = createPlayer("Joueur2");
         startGame();
 
     }
@@ -58,7 +58,7 @@ public class Battle {
     }
 
     public int askAttack(Personage player) {
-        System.out.println(player.name + " (" + player.getHealth() + " vitalité ) veuillez choisir votre action (1. Attaque basique, 2. Attaque spéciale");
+        System.out.println(player.getName() + " (" + player.getHealth() + " vitalité ) veuillez choisir votre action (1. Attaque basique, 2. Attaque spéciale");
         int nbAttack = sc.nextInt();
         return nbAttack;
     }
