@@ -68,7 +68,6 @@ public class Battle {
         int nbAttack = -1;
         do {
             if (turn % 2 == 1) {
-                askAttack(player1);
                 nbAttack = askAttack(player1);
                 if (nbAttack == 1)
                     player1.normalAttack();
@@ -77,7 +76,6 @@ public class Battle {
             }
             turn++;
             if (turn % 2 == 0) {
-                askAttack(player2);
                 nbAttack = askAttack(player2);
                 if (nbAttack == 1)
                     player2.normalAttack();
