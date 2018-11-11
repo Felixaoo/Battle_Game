@@ -1,5 +1,6 @@
 package com.ocr.felix.entity;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class Personage {
@@ -12,6 +13,8 @@ public abstract class Personage {
     protected int damage;
     protected String name;
     protected Scanner sc = new Scanner(System.in);
+    private int nbResponse;
+    private boolean responseIsGood;
 
 
     /**
@@ -101,9 +104,18 @@ public abstract class Personage {
      * @return int nbresponse
      */
     public int askOthers(String stat) {
-        int nbResponse;
-        System.out.println(stat + " du personnage");
-        nbResponse = sc.nextInt();
+
+        do {
+            try {
+                responseIsGood = true;
+                System.out.println(stat + " du personnage");
+                nbResponse = sc.nextInt();
+            } catch (InputMismatchException e) {
+                responseIsGood = false;
+                sc.next();
+                System.out.println("Veuillez saisir un nombre !");
+            }
+        }while (!responseIsGood);
         return nbResponse;
     }
 
@@ -139,8 +151,8 @@ public abstract class Personage {
             setAgility(agility);
             intelligence = askIntelligence();
             setIntelligence(intelligence);
-            if ( strength + agility +intelligence != level)
-                System.out.println( "La somme de la force, de l'agilité et de l'intelligence de votre personnage doit être égale à son niveau.");
+            if (strength + agility + intelligence != level)
+                System.out.println("La somme de la force, de l'agilité et de l'intelligence de votre personnage doit être égale à son niveau.");
         }while ( strength + agility + intelligence != level);
 
     }
