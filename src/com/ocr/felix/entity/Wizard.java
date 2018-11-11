@@ -1,4 +1,4 @@
-package com.ocr.felix;
+package com.ocr.felix.entity;
 
 public class Wizard extends Personage {
 

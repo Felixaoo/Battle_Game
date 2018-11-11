@@ -1,4 +1,4 @@
-package com.ocr.felix;
+package com.ocr.felix.entity;
 
 public class Hunt extends Personage {
     public Hunt(int level, int health, int strength, int agility, int intelligence, String name ) {

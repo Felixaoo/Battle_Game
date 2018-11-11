@@ -1,7 +1,6 @@
 package com.ocr.felix;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import com.ocr.felix.service.Battle;
 
 public class Main {
 /**
