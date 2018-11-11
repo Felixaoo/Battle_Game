@@ -4,7 +4,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class Personage {
-    protected int nbClass;
     protected int level;
     protected int health;
     protected int strength;
@@ -82,20 +81,9 @@ public abstract class Personage {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public int askClass() {
-        int nbChoice;
-        System.out.println(" Veuillez choisir la classe de votre personnage : 1. Guerrier, 2. Mage, 3. Rôdeur");
-        do {
-            nbChoice = sc.nextInt();
-            System.out.println(" Veuillez rentrer un chiffre entre 1 et 3 correspondant à la classe que vous souhaitez");
-        } while (nbChoice <= 0 || nbChoice >= 4);
-        return nbChoice;
 
-    }
+
 
     /**
      * permit to ask about the stat

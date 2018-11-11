@@ -78,38 +78,32 @@ public class Battle {
                 do {
             if (turn % 2 == 1) {
                 nbAttack = askAttack(player1);
-                if (nbAttack == 1) {
-                    player1.normalAttack(player2);
-                    turn++;
-                } else if (nbAttack == 2) {
-                    player1.specialAttack(player2);
-                    turn++;
-                } else {
-                    System.out.println("L'attaque n'existe pas.");
-                }
+                turn = getTurn(turn, player1, player2);
             }else if (turn % 2 == 0) {
                 nbAttack = askAttack(player2);
-                if (nbAttack == 1) {
-                    player2.normalAttack(player1);
-                    turn++;
-                }else if (nbAttack == 2) {
-                    player2.specialAttack(player1);
-                    turn++;
-                }else {
-                        System.out.println("L'attaque n'existe pas.");
-                    }
-                }
-
+                turn = getTurn(turn, player2, player1);
+            }
         }while (player1.getHealth() > 0 && player2.getHealth() > 0) ;
-            if (player1.getHealth() <= 0)
-                System.out.println("Le joueur 1 a perdu !!!");
+            if (player1.getHealth() <= 0 && player2.getHealth() <= 0)
+                System.out.println("Egalité : les 2 joueurs sont morts en même temps.");
             else if (player2.getHealth() <= 0)
                 System.out.println("Le joueur 2 a perdu !!!");
-            else if (player1.getHealth() <= 0 && player2.getHealth() <= 0)
-                System.out.println(" Egalité : les 2 joueurs sont morts en même temps.");
-
-
+            else if (player1.getHealth() <= 0)
+                System.out.println("Le joueur 1 a perdu !!!");
         }
 
-
+    private int getTurn(int turn, Personage player1, Personage player2) {
+        if (nbAttack == 1) {
+            player1.normalAttack(player2);
+            turn++;
+        } else if (nbAttack == 2) {
+            player1.specialAttack(player2);
+            turn++;
+        } else {
+            System.out.println("L'attaque n'existe pas.");
+        }
+        return turn;
     }
+
+
+}
