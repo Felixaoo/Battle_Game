@@ -24,13 +24,7 @@ public class Battle {
         boolean responseIsGood = true;
         System.out.println("Veuillez choisir la classe de votre personnage : 1. Guerrier, 2. Mage, 3. Rôdeur");
         do {
-            try {
-                nbClass = sc.nextInt();
-                responseIsGood = true;
-            } catch (InputMismatchException e) {
-                sc.next();
-                responseIsGood = false;
-            }
+
 
             switch (nbClass) {
                 case 1:
@@ -55,6 +49,18 @@ public class Battle {
                     return null;
             }
         } while (!responseIsGood);
+    }
+
+    private int inputMismatchException(int nbClass) {
+        boolean responseIsGood;
+        try {
+            nbClass = sc.nextInt();
+            responseIsGood = true;
+        } catch (InputMismatchException e) {
+            sc.next();
+            responseIsGood = false;
+        }
+        return nbClass;
     }
 
     public int askAttack(Personage player) {

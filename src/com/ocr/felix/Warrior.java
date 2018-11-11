@@ -23,6 +23,7 @@ public class Warrior extends Personage {
     int damage = getStrenght()*2;
     System.out.println(getName() + " utilise coup de rage et inflige " + damage + " dommage(s) ");
     player.setHealth(player.getHealth() - damage);
-    System.out.println(player.getName() + "perd " + damage + " point(s) de vie");
+    System.out.println(player.getName() + "perd " + getStrenght()/2 + " point(s) de vie");
+    setHealth(getStrenght()/2);
     }
 }
