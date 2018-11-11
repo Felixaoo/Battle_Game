@@ -1,4 +1,9 @@
-package com.ocr.felix;
+package com.ocr.felix.service;
+
+import com.ocr.felix.entity.Hunt;
+import com.ocr.felix.entity.Personage;
+import com.ocr.felix.entity.Warrior;
+import com.ocr.felix.entity.Wizard;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -69,33 +74,32 @@ public class Battle {
         do {
             if (turn % 2 == 1) {
                 nbAttack = askAttack(player1);
-                if (nbAttack == 1)
+                if (nbAttack == 1) {
                     player1.normalAttack(player2);
-                else if (nbAttack == 2)
+                    turn++;
+                } else if (nbAttack == 2) {
                     player1.specialAttack(player2);
-                else {
+                    turn++;
+                } else {
                     System.out.println("L'attaque n'existe pas.");
-                    turn--;
                 }
-                turn++;
-
-                if (turn % 2 == 0) {
-                    nbAttack = askAttack(player2);
-                    if (nbAttack == 1)
-                        player2.normalAttack(player1);
-                    else if (nbAttack == 2)
-                        player2.specialAttack(player1);
-                    else {
+            }else if (turn % 2 == 0) {
+                nbAttack = askAttack(player2);
+                if (nbAttack == 1) {
+                    player2.normalAttack(player1);
+                    turn++;
+                }else if (nbAttack == 2) {
+                    player2.specialAttack(player1);
+                    turn++;
+                }else {
                         System.out.println("L'attaque n'existe pas.");
-                        turn--;
                     }
                 }
-                turn++;
-            }
+
         }while (player1.getHealth() > 0 && player2.getHealth() > 0) ;
-            if (player1.getHealth() < 0)
+            if (player1.getHealth() <= 0)
                 System.out.println("Le joueur 1 a perdu !!!");
-            else if (player2.getHealth() < 0)
+            else if (player2.getHealth() <= 0)
                 System.out.println("Le joueur 2 a perdu !!!");
 
 

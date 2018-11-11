@@ -1,4 +1,4 @@
-package com.ocr.felix;
+package com.ocr.felix.entity;
 
 public class Warrior extends Personage {
     public Warrior(int level, int health, int strength, int agility, int intelligence, String name) {
